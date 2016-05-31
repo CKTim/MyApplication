@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/custom_mylove_actionbar"
+        layout="@layout/custom_mylove_actionbar" />
+
+    <RelativeLayout
+        android:id="@+id/rl_aboutHungryHurry"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:layout_below="@+id/custom_mylove_actionbar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="About Hungry Hurry"
+            android:textSize="16dp"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/back_right" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_connditions"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:layout_below="@+id/rl_aboutHungryHurry">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Terms and Conditions"
+            android:textSize="16dp"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/back_right" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_VisitOurWebsite"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:layout_below="@+id/rl_connditions">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Visit our website"
+            android:textSize="16dp"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/back_right" />
+    </RelativeLayout>
+</RelativeLayout>

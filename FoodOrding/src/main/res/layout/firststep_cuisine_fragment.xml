@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--<RelativeLayout-->
+        <!--android:id="@+id/blank"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp">-->
+        <!--</RelativeLayout>-->
+        <ImageView
+            android:id="@+id/iv_zhongcan"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_below="@+id/blank"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/zhongcan" />
+
+        <ImageView
+            android:id="@+id/iv_xican"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_below="@+id/iv_zhongcan"
+            android:layout_marginTop="7dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/xican" />
+
+        <ImageView
+            android:id="@+id/iv_korea"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_below="@+id/iv_xican"
+            android:layout_marginTop="7dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/food_korea"/>
+
+        <ImageView
+            android:id="@+id/iv_japanese"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_below="@+id/iv_korea"
+            android:layout_marginTop="7dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/japanese" />
+    </RelativeLayout>
+</ScrollView>

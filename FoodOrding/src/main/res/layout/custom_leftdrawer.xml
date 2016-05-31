@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ScrollView
+        android:id="@+id/ScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/leftdrawer_iv_background"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:background="@mipmap/drawertitle" />
+
+            <LinearLayout
+                android:id="@+id/leftdrawer_ln"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/leftdrawer_iv_background"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/leftdrawer_rl1_neworder"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/leftdrawer_selector">
+
+                    <ImageView
+                        android:id="@+id/leftdrawer_rl1_iv1"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/leftdrawer_neworder_selector" />
+
+                    <TextView
+                        android:id="@+id/leftdrawer_rl1_tv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@+id/leftdrawer_rl1_iv1"
+                        android:text="New Order"
+                        android:textColor="@drawable/textview_selector"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/leftdrawer_rl2_History"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/leftdrawer_selector">
+
+                    <ImageView
+                        android:id="@+id/leftdrawer_rl2_iv1"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/leftdrawer_history_selector" />
+
+                    <TextView
+                        android:id="@+id/leftdrawer_rl2_tv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@+id/leftdrawer_rl2_iv1"
+                        android:text="History"
+                        android:textColor="@drawable/textview_selector"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/leftdrawer_rl3_CustomerSupport"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/leftdrawer_selector">
+
+                    <ImageView
+                        android:id="@+id/leftdrawer_rl3_iv1"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/leftdrawer_customer_selector" />
+
+                    <TextView
+                        android:id="@+id/leftdrawer_rl3_tv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@+id/leftdrawer_rl3_iv1"
+                        android:text="Customer Support"
+                        android:textColor="@drawable/textview_selector"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/leftdrawer_rl4_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/leftdrawer_selector">
+
+                    <ImageView
+                        android:id="@+id/leftdrawer_rl4_iv1"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                       android:background="@drawable/leftdrawer_setting_selector"/>
+
+                    <TextView
+                        android:id="@+id/leftdrawer_rl4_tv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@+id/leftdrawer_rl4_iv1"
+                        android:text="Settings"
+                        android:textColor="@drawable/textview_selector"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/leftdrawer_rl5_about_Hunry"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/leftdrawer_selector">
+
+                    <ImageView
+                        android:id="@+id/leftdrawer_rl5_iv1"
+                        android:layout_width="29dp"
+                        android:layout_height="29dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/leftdrawer_aboutus_selector"/>
+
+                    <TextView
+                        android:id="@+id/leftdrawer_rl5_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@+id/leftdrawer_rl5_iv1"
+                        android:text="About Hungry hurry"
+                        android:textColor="@drawable/textview_selector"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/leftdrawer_rl6_share"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/leftdrawer_selector">
+
+                    <ImageView
+                        android:id="@+id/leftdrawer_rl6_iv1"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/leftdrawer_share_selector" />
+
+                    <TextView
+                        android:id="@+id/leftdrawer_rl6_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@+id/leftdrawer_rl6_iv1"
+                        android:text="Share to friends"
+                        android:textColor="@drawable/textview_selector"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

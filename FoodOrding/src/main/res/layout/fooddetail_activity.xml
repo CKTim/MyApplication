@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <widget.Custom_fooddetail_scrollview
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/iv_food"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:scaleType="centerCrop"
+                 android:src="@mipmap/loading_url2"/>
+
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@mipmap/back" />
+
+
+            <Button
+                android:id="@+id/btn_weishoucan"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/firstep_customshoucang_selector" />
+
+            <RelativeLayout
+                android:id="@+id/rl_prices"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="235dp"
+                android:background="@drawable/custom_prices_rl">
+
+                <TextView
+                    android:id="@+id/tv_prices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="HK$250"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/food_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/iv_food"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text="ShaShiMi SuShi Set"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/food_shoucang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/food_name"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="5dp"
+                android:text="0 collected"
+                android:textColor="@color/gray"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/food_xiaoliang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/food_name"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/food_shoucang"
+                android:text="Monthly sales 0"
+                android:textColor="@color/gray"
+                android:textSize="15dp" />
+            <!--<Button-->
+                <!--android:id="@+id/btn_addtocart"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:layout_below="@+id/food_shoucang"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+               <!--android:layout_alignParentLeft="true"-->
+                <!--android:background="@color/abc_search_url_text_normal"-->
+                <!--android:text="Add to The CAA"/>-->
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/food_xiaoliang"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray"></View>
+
+            <TextView
+                android:id="@+id/food_descripse1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view1"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="15dp"
+                android:text="Food introduce" />
+
+            <RelativeLayout
+                android:id="@+id/food_descripse_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/food_descripse1"
+                android:layout_marginTop="4dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tv_food_descripse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="5dp"
+                    android:padding="8dp"/>
+
+            </RelativeLayout>
+
+
+            <!--<Button-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="55dp"-->
+            <!--android:text="nihao "-->
+            <!--android:layout_above="@+id/rl_bottom"-->
+            <!--android:layout_marginTop="500dp"-->
+            <!--android:layout_below="@+id/food_descripse_rl"/>-->
+
+        </RelativeLayout>
+
+    </widget.Custom_fooddetail_scrollview>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom_gotoshop"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="50dp"
+        android:background="@color/orange">
+
+        <ImageView
+            android:id="@+id/iv_shop"
+            android:layout_width="31dp"
+            android:layout_height="31dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="7dp"
+            android:background="@mipmap/iconfont_shangjia" />
+
+        <TextView
+            android:id="@+id/tv_gotoshop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/iv_shop"
+            android:text="Go to the shop to order"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
+        <ImageView
+
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="7dp"
+            android:background="@mipmap/right_jiantou" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom_finishorder"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/orange"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_shopcar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/shop_car" />
+
+        <TextView
+            android:id="@+id/tv_totalprices1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@+id/iv_shopcar"
+            android:text="Total   HK$"
+            android:textColor="#FFFFFF"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tv_totalprices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_totalprices1"
+            android:text="0"
+            android:textColor="#FFFFFF"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/btn_finishOrde"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/white"
+            android:text="Finish"
+            android:textColor="@color/orange" />
+    </RelativeLayout>
+
+</RelativeLayout>

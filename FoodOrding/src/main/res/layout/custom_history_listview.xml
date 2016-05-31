@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <ImageView
+        android:id="@+id/iv_restaurant"
+        android:layout_width="match_parent"
+        android:layout_height="115dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/loadingpic" />
+
+    <TextView
+        android:id="@+id/tv_restaurant_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="90dp"
+        android:text="Rock Stone  Restaurant"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
+    <RelativeLayout
+        android:id="@+id/rl_foodname"
+        android:layout_below="@+id/iv_restaurant"
+        android:layout_width="match_parent"
+         android:background="@color/white"
+        android:layout_height="wrap_content">
+      <TextView
+          android:id="@+id/tv_foodname"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Your Order status:"
+          android:layout_marginTop="6dp"
+          android:textSize="16dp"
+          android:textColor="@color/black"
+          android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_order_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cooking"
+            android:textColor="@color/red"
+            android:layout_marginTop="6dp"
+            android:textSize="17dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_ordertime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_order_status"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/gray"
+            android:layout_marginBottom="10dp"
+            android:textSize="13dp"
+            android:text="5/13/2016"/>
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_order_status"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:layout_marginBottom="10dp"
+            android:text="Total:  HK$ 60"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/tv_total"
+            android:background="@color/gray"/>
+    </RelativeLayout>
+    <Button
+        android:id="@+id/btn_addComment"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="@color/white"
+        android:text="ADD the Comment"
+        android:focusable="false"
+        android:layout_below="@+id/rl_foodname">
+    </Button>
+
+</RelativeLayout>

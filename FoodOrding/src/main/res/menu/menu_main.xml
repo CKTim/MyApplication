@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.cxk.myapplication.MainActivity">
+    <item
+        android:title="收藏"
+        android:id="@+id/btn_love"
+        android:orderInCategory="100"
+        android:icon="@mipmap/weishoucang_restaurant"
+        app:showAsAction="ifRoom" />
+    <item
+        android:title="分享"
+        android:id="@+id/btn_share"
+        android:orderInCategory="101"
+        android:icon="@mipmap/share"
+        app:showAsAction="ifRoom" />
+</menu>

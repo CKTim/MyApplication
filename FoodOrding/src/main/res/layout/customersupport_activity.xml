@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/custom_mylove_actionbar"
+        layout="@layout/custom_mylove_actionbar" />
+
+    <TextView
+        android:id="@+id/tv_emailus1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/custom_mylove_actionbar"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="18dp"
+        android:text="Email Us"
+        android:textSize="16dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_emailus"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tv_emailus1"
+        android:layout_marginTop="5dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_emailus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="info@hungryhurry.com.hk"
+            android:textColor="@color/orange"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_ServiceHotline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_emailus"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:text="Service Hotline"
+        android:textSize="16dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_ServiceHotline"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tv_ServiceHotline1"
+        android:layout_marginTop="5dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_ServiceHotline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="+852 3827 0000"
+            android:textColor="@color/orange"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_OfficeHour1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_ServiceHotline"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:text="Welcome to contact us anytime"
+        android:textSize="16dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_OfficeHour"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tv_OfficeHour1"
+        android:layout_marginTop="5dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_OfficeHour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="7 days working day  07:00-24:00"
+            android:textColor="@color/orange"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white" >
+
+            <include
+                android:id="@+id/custom_mylove_actionbar"
+                layout="@layout/custom_mylove_actionbar" />
+
+            <ListView
+                android:id="@+id/mylove_lv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/rl_addmore"
+                android:layout_below="@+id/custom_mylove_actionbar"
+                android:layout_marginTop="10dp"
+                android:divider="@color/white"
+                android:dividerHeight="6dp" >
+            </ListView>
+
+            <RelativeLayout
+                android:id="@+id/rl_addmore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/lightorange" >
+
+                <Button
+                    android:id="@+id/btn_addmore"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/addmore_custom_button"
+                    android:text="Add more"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <widget.Custom_leftdrawer
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start" />
+    </android.support.v4.widget.DrawerLayout>
+
+</RelativeLayout>

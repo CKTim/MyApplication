@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/deepblue">
+
+    <RelativeLayout
+        android:id="@+id/rl_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:background="@color/white">
+        <TextView
+            android:id="@+id/tv_numberLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:textSize="18dp"
+            android:text="Member Login"/>
+
+        <EditText
+            android:id="@+id/login_et_loginName"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_below="@+id/tv_numberLogin"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/custom_edittext"
+            android:hint="username"
+            android:layout_marginTop="20dp"
+            android:inputType="number"
+            android:paddingLeft="18dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textColorHint="@color/gray" />
+
+        <EditText
+            android:id="@+id/login_et_Password"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_below="@+id/login_et_loginName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/custom_edittext"
+            android:digits="0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+            android:hint="password"
+            android:paddingLeft="18dp"
+            android:password="true"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textColorHint="@color/gray" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_below="@+id/login_et_Password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="21dp"
+            android:background="@drawable/custom__login_button"
+            android:text="login"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_resign"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_below="@+id/btn_login"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="21dp"
+            android:background="@drawable/custom__login_button"
+            android:text="sign in"
+            android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/tv_Welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_resign"
+            android:text="Welcome to Hungry Hurry"
+            android:layout_centerHorizontal="true"
+            android:textSize="14dp"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/gray"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_Welcome"
+            android:text="About us"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/orange"
+            android:textSize="16dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="21dp"/>
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:background="@drawable/custom_login_rl"
+        android:layout_centerHorizontal="true"
+       android:layout_above="@+id/rl_login"
+        android:layout_marginBottom="-25dp">
+        <ImageView
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/login_logo"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

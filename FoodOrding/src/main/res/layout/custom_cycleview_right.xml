@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants">
+
+    <ImageView
+        android:id="@+id/iv_restaurant"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/restauurant" />
+    <TextView
+        android:id="@+id/tv_food_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hanburger"
+        android:textColor="@color/white"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="80dp"/>
+
+    <Button
+        android:id="@+id/btn_restaurant_love"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/firstep_customshoucang_selector"
+        android:focusable="false" />
+
+    <TextView
+        android:id="@+id/tv_food_prices1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/iv_restaurant"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:text="HK$"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/tv_food_prices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_restaurant"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/tv_food_prices1"
+        android:text="20"
+        android:textSize="15dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/iv_restaurant"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/decrease"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:background="@mipmap/decrease" />
+
+        <TextView
+            android:id="@+id/mount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/decrease"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:text="0"
+            android:textSize="12dp" />
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_toRightOf="@+id/mount"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="2"
+            android:background="@mipmap/add" />
+    </RelativeLayout>
+</RelativeLayout>

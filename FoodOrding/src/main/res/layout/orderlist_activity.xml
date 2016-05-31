@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/lightorange">
+
+            <RelativeLayout
+                android:id="@+id/custom_actionbar"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/orange">
+
+                <Button
+                    android:id="@+id/btn_opendrawer"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@mipmap/drawerlayout" />
+
+                <Button
+                    android:id="@+id/btn_openmylove"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@mipmap/mylove" />
+
+                <TextView
+                    android:id="@+id/actionbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Cart"
+                    android:textColor="@color/white"
+                    android:textSize="21dp" />
+
+                <ImageView
+                    android:id="@+id/seekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="29dp"
+                    android:layout_below="@+id/btn_opendrawer"
+                    android:layout_marginTop="11dp"
+                    android:background="@mipmap/second_step" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/btn_paynow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/addmore_custom_button"
+                    android:text="Pay now"
+                    android:textColor="@color/white"></Button>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_allcount1"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_above="@+id/rl_bottom"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tv_total_count1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Total amount"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_total_count2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="17dp"
+                    android:layout_toLeftOf="@+id/tv_total_count"
+                    android:text="HK$"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/tv_total_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/tv_dilivery_fee1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/tv_total_count1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
+                    android:text="-Dilivery fee"
+                    android:textColor="@color/gray"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_dilivery_fee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tv_total_count"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="4dp"
+                    android:text="HK$ 0"
+                    android:textColor="@color/gray"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_discount1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/tv_dilivery_fee1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="2dp"
+                    android:text="-Discount"
+                    android:textColor="@color/gray"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_discount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tv_dilivery_fee"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2dp"
+                    android:text="N/A"
+                    android:textColor="@color/gray"
+                    android:textSize="13dp" />
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/secondstep_orderlist_lv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/rl_allcount1"
+                android:layout_below="@+id/custom_actionbar"
+                android:divider="@color/lightorange"
+                android:dividerHeight="17dp"></ListView>
+        </RelativeLayout>
+
+        <widget.Custom_leftdrawer
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start" />
+    </android.support.v4.widget.DrawerLayout>
+</RelativeLayout>
