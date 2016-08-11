@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,14 +19,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.cxk.myapplication.R;
+
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -36,23 +32,17 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
-import java.awt.font.TextAttribute;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import bean.HeatBean;
 import bean.MySecurityShopMessageBean;
-import bean.NearbyAllListBean;
 import bean.ShopMessageBean;
-import bean.ShopmenuBean;
+import cn.gdin.hk.hungry.R;
 import fragment.Shopcomment_fragment;
 import fragment.Shopdetail_fragment;
 import fragment.Shopmenu_fragment;
-import utils.HttpUtilsAddToLove;
-import utils.HttpUtilsGetJson;
+import utils.ManageActivityUtils;
 import utils.MySecurityUtil;
 
 /**
@@ -136,6 +126,7 @@ public class ShopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shop_activity);
+        ManageActivityUtils.addActivity(this);
         //初始化各个控件ID
         initIds();
         //将各个标题装在titles里面

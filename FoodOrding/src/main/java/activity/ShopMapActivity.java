@@ -16,7 +16,6 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.UiSettings;
-import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.overlay.DrivingRouteOverlay;
 import com.amap.api.maps.overlay.WalkRouteOverlay;
 import com.amap.api.services.core.LatLonPoint;
@@ -26,7 +25,10 @@ import com.amap.api.services.route.DriveRouteResult;
 import com.amap.api.services.route.RouteSearch;
 import com.amap.api.services.route.WalkPath;
 import com.amap.api.services.route.WalkRouteResult;
-import com.example.cxk.myapplication.R;
+
+
+import cn.gdin.hk.hungry.R;
+import utils.ManageActivityUtils;
 
 /**
  * Created by cxk on 2016/5/9.
@@ -47,6 +49,7 @@ public class ShopMapActivity extends AppCompatActivity implements LocationSource
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shopmap_activity);
+        ManageActivityUtils.addActivity(this);
         //如果安卓5.0设置状态栏为orange
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.orange));

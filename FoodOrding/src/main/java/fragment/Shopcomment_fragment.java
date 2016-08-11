@@ -17,7 +17,6 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.example.cxk.myapplication.R;
 import com.google.gson.Gson;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -31,6 +30,7 @@ import java.util.Map;
 
 import bean.MySecurityShopMessageBean;
 import bean.ShopMessageBean;
+import cn.gdin.hk.hungry.R;
 import utils.HttpUtilsGetJson;
 import utils.MySecurityUtil;
 

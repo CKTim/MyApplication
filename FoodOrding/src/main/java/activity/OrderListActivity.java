@@ -5,7 +5,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,18 +18,9 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.cxk.myapplication.R;
 import com.google.gson.Gson;
 
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.protocol.HTTP;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,9 +28,8 @@ import java.util.Map;
 
 import bean.AllMessageOrderListBean;
 import bean.OrderListBean;
-import utils.HttpUtilsAddToLove;
-import utils.HttpUtilsGetJson;
-import utils.HttpUtilsSendOrder;
+import cn.gdin.hk.hungry.R;
+import utils.ManageActivityUtils;
 
 /**
  * Created by cxk on 2016/4/12.
@@ -66,6 +55,7 @@ public class OrderListActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.orderlist_activity);
+        ManageActivityUtils.addActivity(this);
         //如果安卓5.0设置状态栏为orange
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.orange));

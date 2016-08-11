@@ -15,15 +15,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.cxk.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.gdin.hk.hungry.R;
 import fragment.Korea_fragment1;
 import fragment.Korea_fragment2;
-import fragment.Western_fragment1;
-import fragment.Western_fragment2;
+import utils.ManageActivityUtils;
 
 /**
  * Created by cxk on 2016/4/19.
@@ -43,6 +42,7 @@ public class KoreaFoodActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.koreafood_activity);
+        ManageActivityUtils.addActivity(this);
         //如果安卓5.0设置状态栏为orange
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.orange));

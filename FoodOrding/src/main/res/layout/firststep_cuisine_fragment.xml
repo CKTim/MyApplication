@@ -7,16 +7,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <!--<RelativeLayout-->
-        <!--android:id="@+id/blank"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="60dp">-->
-        <!--</RelativeLayout>-->
         <ImageView
             android:id="@+id/iv_zhongcan"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_below="@+id/blank"
             android:scaleType="centerCrop"
             android:src="@mipmap/zhongcan" />
 

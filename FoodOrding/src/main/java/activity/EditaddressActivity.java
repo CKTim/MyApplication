@@ -1,27 +1,18 @@
 package activity;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.cxk.myapplication.R;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import cn.gdin.hk.hungry.R;
+import utils.ManageActivityUtils;
 
 /**
  * Created by cxk on 2016/4/15.
@@ -37,6 +28,7 @@ public class EditaddressActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editaddress_activity);
+        ManageActivityUtils.addActivity(this);
         //如果安卓5.0设置状态栏为orange
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.orange));

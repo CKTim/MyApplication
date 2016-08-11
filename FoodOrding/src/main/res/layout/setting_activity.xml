@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/custom_mylove_actionbar"
+        layout="@layout/custom_mylove_actionbar" />
+    <TextView
+        android:id="@+id/tv_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Language"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="18dp"
+        android:textSize="16dp"
+        android:layout_below="@+id/custom_mylove_actionbar"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_English"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:layout_below="@+id/tv_language">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="English"
+            android:textSize="14dp"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/back_right" />
+    </RelativeLayout>
+  <View
+      android:id="@+id/view1"
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:background="@color/lightgry"
+      android:layout_below="@+id/rl_English"/>
+    <RelativeLayout
+        android:id="@+id/rl_Chinese1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:layout_below="@+id/view1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Chinese(traditional)"
+            android:textSize="14dp"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/back_right" />
+    </RelativeLayout>
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/lightgry"
+        android:layout_below="@+id/rl_Chinese1"/>
+    <RelativeLayout
+        android:id="@+id/rl_Chinese2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:layout_below="@+id/view2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Chinese(simplified)"
+            android:textSize="14dp"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/back_right" />
+    </RelativeLayout>
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/lightgry"
+        android:layout_below="@+id/rl_Chinese2"/>
+    <TextView
+        android:id="@+id/tv_textsize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Text Size"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="18dp"
+        android:textSize="16dp"
+        android:layout_below="@+id/view3"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_bigText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:layout_below="@+id/tv_textsize">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Aa"
+            android:textSize="16dp"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/back_right" />
+    </RelativeLayout>
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/lightgry"
+        android:layout_below="@+id/rl_bigText"/>
+    <RelativeLayout
+        android:id="@+id/rl_smallText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:layout_below="@+id/view4">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Aa"
+            android:textSize="14dp"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/back_right" />
+    </RelativeLayout>
+    <View
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/lightgry"
+        android:layout_below="@+id/rl_smallText"/>
+    <Button
+        android:id="@+id/btn_loginOut"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="@drawable/custom__login_button"
+        android:layout_below="@+id/view5"
+        android:text="注销登录"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:textSize="15dp"/>
+</RelativeLayout>

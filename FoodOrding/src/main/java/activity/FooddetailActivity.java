@@ -1,9 +1,7 @@
 package activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
@@ -15,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.cxk.myapplication.R;
+
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -25,19 +23,12 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
 
 import bean.FooddetailBean;
-import bean.HeatBean;
 import bean.MySecurityAddtoLoveBean;
 import bean.MySecurityFoodDetailBean;
-import bean.MySecurityNeabyAllListBean;
-import bean.NearbyAllListBean;
-import utils.HttpUtilsAddToLove;
-import utils.HttpUtilsGetJson;
+import cn.gdin.hk.hungry.R;
+import utils.ManageActivityUtils;
 import utils.MySecurityUtil;
 import widget.Custom_fooddetail_scrollview;
 
@@ -101,6 +92,7 @@ public class FooddetailActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fooddetail_activity);
+        ManageActivityUtils.addActivity(this);
         //如果安卓5.0设置状态栏为orange
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.orange));
@@ -113,7 +105,7 @@ public class FooddetailActivity extends AppCompatActivity implements View.OnClic
         GetData();
         //设置加载imageloader的option
         options = new DisplayImageOptions.Builder().showImageOnLoading(R.mipmap.loading_url2)
-                .showImageOnFail(R.mipmap.loadingfailed).cacheInMemory(true).build();
+                .showImageOnFail(R.mipmap.loadingfailed).cacheInMemory(true).cacheOnDisk(true).build();
 //
 //        //设置是否收藏
 //        if (getIntent().getStringExtra("isCollect").equals("true")) {

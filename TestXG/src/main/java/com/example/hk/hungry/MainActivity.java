@@ -1,17 +1,13 @@
-package com.example.cxk.myapplication;
+package com.example.hk.hungry;
 
 import android.app.NotificationManager;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.squareup.okhttp.Callback;
@@ -20,7 +16,6 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.tencent.android.tpush.XGIOperateCallback;
 import com.tencent.android.tpush.XGPushManager;
-import com.tencent.android.tpush.XGPushTextMessage;
 
 import java.io.IOException;
 

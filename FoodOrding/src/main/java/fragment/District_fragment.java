@@ -6,7 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.cxk.myapplication.R;
+import cn.gdin.hk.hungry.R;
+
 
 public class District_fragment extends Fragment {
 	private View view;

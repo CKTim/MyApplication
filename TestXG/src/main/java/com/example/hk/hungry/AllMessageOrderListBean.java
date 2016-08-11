@@ -1,4 +1,4 @@
-package com.example.cxk.myapplication;
+package com.example.hk.hungry;
 
 import java.io.Serializable;
 import java.util.List;

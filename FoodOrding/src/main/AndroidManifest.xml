@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cxk.myapplication">
+    package="cn.gdin.hk.hungry">
     <!-- 用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
     <!-- 用于访问GPS定位 -->
@@ -30,7 +30,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name=".MyApplication"
+        android:name="cn.gdin.hk.hungry.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/app_logo"
         android:label="@string/app_name"
@@ -43,7 +43,7 @@
             android:value="28149fab00f45ae4f1af17cb6f12b927"></meta-data>
 
         <activity
-            android:name=".MainActivity"
+            android:name="cn.gdin.hk.hungry.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar">
@@ -57,9 +57,9 @@
         <activity android:name="activity.FooddetailActivity" />
         <activity android:name="activity.ShopActivity" />
         <activity android:name="activity.OrderListActivity" />
-        <activity android:name="activity.HistoryActivity">
+        <activity android:name="activity.HistoryActivity"/>
+        <activity android:name="activity.SettingActivity"/>
 
-        </activity>
         <activity android:name="activity.CustomersupportActivity"></activity>
         <activity android:name="activity.AboutHungryHurryActivity" />
         <activity android:name="activity.ProfileActivity"></activity>
@@ -130,7 +130,7 @@
             android:name="com.tencent.android.tpush.rpc.XGRemoteService"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.example.cxk.myapplication.PUSH_ACTION" />
+                <action android:name="cn.gdin.hk.hungry.PUSH_ACTION" />
             </intent-filter>
         </service>
         <!-- com.tencent.android.xgpushdemo.CustomPushReceiver需要改为自己的Receiver -->
@@ -145,11 +145,11 @@
         <!-- 【必须】 请将YOUR_ACCESS_ID修改为APP的AccessId，“21”开头的10位数字，中间没空格 -->
         <meta-data
             android:name="XG_V2_ACCESS_ID"
-            android:value="2100197593" />
+            android:value="2100214805" />
         <!-- 【必须】 请将YOUR_ACCESS_KEY修改为APP的AccessKey，“A”开头的12位字符串，中间没空格 -->
         <meta-data
             android:name="XG_V2_ACCESS_KEY"
-            android:value="A9U378WZU7RQ" />
+            android:value="AE57D8J5TW8T" />
     </application>
 
 </manifest>

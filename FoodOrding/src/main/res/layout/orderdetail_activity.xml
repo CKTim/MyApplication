@@ -112,7 +112,6 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="25dp"
                                 android:layout_toRightOf="@+id/iv_shop"
-                                android:text="The shop name"
                                 android:textSize="17dp" />
 
                             <ImageView
@@ -139,7 +138,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="10dp"
                             android:text="Your Order"
-                            android:textColor="@color/black"
+                            android:textColor="@color/orange"
                             android:textSize="17dp" />
 
                         <ListView
@@ -223,7 +222,7 @@
                             android:layout_below="@+id/tv_tel"
                             android:layout_marginLeft="35dp"
                             android:layout_marginTop="10dp"
-                            android:text="香港特别行政区南區数码港道100号"
+                            android:text=""
                             android:layout_marginBottom="10dp"
                             android:textSize="14dp" />
                         <RelativeLayout
@@ -239,7 +238,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="35dp"
-                                android:text="payment:  Cash"
+                                android:text=""
 
                                 android:textSize="14dp"/>
                             <TextView
@@ -248,7 +247,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="35dp"
                                 android:layout_below="@+id/tv_payment"
-                                android:text="ordertime:  May 13th"
+                                android:text=""
                                 android:layout_marginTop="10dp"
                                 android:textSize="14dp"/>
                             <TextView
@@ -257,7 +256,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="35dp"
                                 android:layout_below="@+id/tv_OrderTime"
-                                android:text="discount:  0"
+                                android:text=""
                                 android:layout_marginTop="10dp"
                                 android:textSize="14dp"
                                 android:layout_marginBottom="10dp"/>

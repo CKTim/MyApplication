@@ -21,7 +21,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.cxk.myapplication.R;
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -37,10 +36,10 @@ import java.util.List;
 import java.util.Map;
 
 import activity.FooddetailActivity;
-import adapter.MyListViewAdapter;
 import bean.CategoryFoodBean;
 import bean.MySecurityAddtoLoveBean;
 import bean.MySecurityCategoryBean;
+import cn.gdin.hk.hungry.R;
 import utils.HttpUtilsAddToLove;
 import utils.HttpUtilsGetJson;
 import utils.MySecurityUtil;
@@ -290,7 +289,7 @@ public class Western_fragment2 extends Fragment {
 
             //先定义一个加载图片的option
             DisplayImageOptions options = new DisplayImageOptions.Builder().showImageOnLoading(R.mipmap.loadingpic)
-                    .showImageOnFail(R.mipmap.loadingfailed).cacheInMemory(true).build();
+                    .showImageOnFail(R.mipmap.loadingfailed).cacheInMemory(true).cacheOnDisk(true).build();
             //加载餐厅或者食物照片
             ImageLoader.getInstance().displayImage((String) list.get(position).get("url"), holder.iv_restaurant,
                     options);

@@ -8,8 +8,7 @@
         android:id="@+id/iv_restaurant"
         android:layout_width="match_parent"
         android:layout_height="115dp"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/restauurant" />
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/tv_restaurant_name"

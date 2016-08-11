@@ -1,4 +1,4 @@
-package com.example.cxk.myapplication;
+package cn.gdin.hk.hungry;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

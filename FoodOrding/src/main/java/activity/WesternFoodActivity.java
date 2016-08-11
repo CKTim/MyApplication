@@ -15,15 +15,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.cxk.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import fragment.Chinese_fragment1;
-import fragment.Chinese_fragment2;
+import cn.gdin.hk.hungry.R;
 import fragment.Western_fragment1;
 import fragment.Western_fragment2;
+import utils.ManageActivityUtils;
 
 /**
  * Created by cxk on 2016/4/19.
@@ -43,6 +42,7 @@ public class WesternFoodActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.westernfood_activity);
+        ManageActivityUtils.addActivity(this);
         //如果安卓5.0设置状态栏为orange
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.orange));

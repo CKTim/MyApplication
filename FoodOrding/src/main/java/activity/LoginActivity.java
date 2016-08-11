@@ -7,13 +7,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.cxk.myapplication.MainActivity;
-import com.example.cxk.myapplication.R;
+import cn.gdin.hk.hungry.MainActivity;
+
 import com.google.gson.Gson;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -26,6 +27,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import bean.MySecurityResignBean;
+import cn.gdin.hk.hungry.R;
+import utils.ManageActivityUtils;
 import utils.MySecurityUtil;
 
 /**
@@ -40,6 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private OkHttpClient okHttpClient = new OkHttpClient();
     private static final int FINISH = 0;
     private SharedPreferences sp;
+    private long firstTime=0;
     private Handler mhandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
@@ -54,6 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             sp = getSharedPreferences("userMessage", MODE_PRIVATE);
                             SharedPreferences.Editor editor = sp.edit();
                             editor.putString("loginName", jsonObject.getString("userId"));
+                            editor.putString("loginAccount",et_loginName.getText().toString());
                             editor.putString("ifFirst", "false");
                             editor.commit();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -76,15 +81,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
+        ManageActivityUtils.addActivity(this);
         //初始化各个控件ID
         initIDs();
         //判断是否已经登录过
-        sp = getSharedPreferences("userMessage", MODE_PRIVATE);
-        String ifFirst = sp.getString("ifFirst", "true");
-        if (ifFirst.equals("false")) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            this.finish();
+            sp = getSharedPreferences("userMessage", MODE_PRIVATE);
+            String ifFirst = sp.getString("ifFirst", "true");
+            if (ifFirst.equals("false")) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                this.finish();
         }
     }
 
@@ -151,5 +157,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent);
                 break;
         }
+    }
+
+    //实现点击两次返回键退出
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            long secondTime=System.currentTimeMillis();
+            if(secondTime-firstTime>2000){
+                Toast.makeText(this,"請按一次退出程序",Toast.LENGTH_SHORT).show();
+                firstTime=secondTime;
+                return true;
+            }else{
+                ManageActivityUtils.finishAll();
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

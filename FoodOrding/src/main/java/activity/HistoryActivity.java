@@ -1,6 +1,5 @@
 package activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -21,7 +20,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.cxk.myapplication.R;
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -36,10 +34,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import adapter.MyListViewAdapter;
 import bean.HistoryOrderBean;
 import bean.MySecurityHistoryOrderBean;
 import bean.MyloveBean;
+import cn.gdin.hk.hungry.R;
+import utils.ManageActivityUtils;
 import utils.MySecurityUtil;
 
 /**
@@ -123,6 +122,7 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history_activity);
+        ManageActivityUtils.addActivity(this);
         //如果安卓5.0设置状态栏为orange
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.orange));
@@ -308,7 +308,7 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
             }
 //            holder.food_lv.setAdapter(food_adapter);
             DisplayImageOptions options = new DisplayImageOptions.Builder().showImageOnLoading(R.mipmap.loadingpic)
-                    .showImageOnFail(R.mipmap.loadingfailed).cacheInMemory(true).build();
+                    .showImageOnFail(R.mipmap.loadingfailed).cacheInMemory(true).cacheOnDisk(true).build();
             ImageLoader.getInstance().displayImage((String) list.get(position).get("url"), holder.iv_restaurant,
                     options);
             holder.tv_restaurant.setText((String) list.get(position).get("BussinessName"));
@@ -325,7 +325,7 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
             } else if (isFinish.equals("1")) {
                 holder.tv_status.setText("have confirmed");
             } else if (isFinish.equals("2")) {
-                holder.tv_status.setText("have distributed");
+                holder.tv_status.setText("have finished");
             } else if (isFinish.equals("3")) {
                 holder.tv_status.setText("have finished");
             }

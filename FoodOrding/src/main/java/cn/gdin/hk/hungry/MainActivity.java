@@ -1,9 +1,8 @@
-package com.example.cxk.myapplication;
+package cn.gdin.hk.hungry;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +26,10 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -49,14 +48,14 @@ import activity.ShopActivity;
 import bean.HeatBean;
 import bean.MySecurityAddtoLoveBean;
 import bean.MySecurityHeatBean;
-import utils.HttpUtilsAddToLove;
-import utils.HttpUtilsGetJson;
+import utils.ManageActivityUtils;
 import utils.MySecurityUtil;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btn_openMyLove, btn_opendrawer, btn_restaurant, btn_cuisine, btn_district;
     private Button btn_restaurant1, btn_cuisine1, btn_district1;
     private DrawerLayout drawerlayout;
+    private DisplayImageOptions options;
     private ListView lv;
     private ViewPager viewPager;
     private List<Map<String, Object>> list;
@@ -80,11 +79,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int FINISHOk = 0;
     private int page = 1;
     private MySecurityHeatBean mySecurityHeatBean = new MySecurityHeatBean();
-    private MySecurityAddtoLoveBean mySecurityAddtoLoveBean=new MySecurityAddtoLoveBean();
+    private MySecurityAddtoLoveBean mySecurityAddtoLoveBean = new MySecurityAddtoLoveBean();
     private Gson gson;
     private String encryptJsonToBase64;
     private OkHttpClient client = new OkHttpClient();
     private String loginName;
+    private long firstTime=0;
     private Handler mhandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
@@ -170,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ManageActivityUtils.addActivity(this);
         //如果安卓5.0设置状态栏为orange
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.orange));
@@ -194,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         list = new ArrayList<>();
         gson = new Gson();
         //加密数据
-        String string = "getAllHeat@"+loginName+"@" + page + "@5";
+        String string = "getAllHeat@" + loginName + "@" + page + "@5";
         String md5String = MySecurityUtil.string2MD5(string);
         mySecurityHeatBean.setPageNow("1");
         mySecurityHeatBean.setPageSize("5");
@@ -241,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (FINISHOk == 0) {
                             page = page + 1;
                             FINISHOk = 1;
-                            String string = "getAllHeat@"+loginName+"@" + page + "@5";
+                            String string = "getAllHeat@" + loginName + "@" + page + "@5";
                             String md5String = MySecurityUtil.string2MD5(string);
                             mySecurityHeatBean = new MySecurityHeatBean();
                             mySecurityHeatBean.setPageNow(page + "");
@@ -322,8 +323,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (int i = 0; i < Urls.length; i++) {
             ImageView imageview = new ImageView(MainActivity.this);
             imageview.setScaleType(ImageView.ScaleType.FIT_XY);
-            DisplayImageOptions options = new DisplayImageOptions.Builder().showImageOnLoading(R.mipmap.loading_url2)
-                    .showImageOnFail(R.mipmap.loading_url2_failed).cacheInMemory(true).build();
+//            DisplayImageOptions options = new DisplayImageOptions.Builder().showImageOnLoading(R.mipmap.loading_url2)
+//                    .showImageOnFail(R.mipmap.loading_url2_failed).cacheInMemory(true).build();
             ImageLoader.getInstance().displayImage(Urls[i], imageview, options);
             views.add(imageview);
         }
@@ -410,8 +411,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_cuisine1.setOnClickListener(this);
         btn_district1.setOnClickListener(this);
         //获取登录帐号
-        SharedPreferences sp=MainActivity.this.getSharedPreferences("userMessage",MODE_PRIVATE);
-        loginName=sp.getString("loginName","");
+        SharedPreferences sp = MainActivity.this.getSharedPreferences("userMessage", MODE_PRIVATE);
+        loginName = sp.getString("loginName", "");
+        //先定义一个加载图片的option
+        options = new DisplayImageOptions.Builder().showImageOnLoading(R.mipmap.loadingpic)
+                .showImageOnFail(R.mipmap.loadingfailed).cacheInMemory(true).cacheOnDisk(true).displayer(new SimpleBitmapDisplayer()).build();
     }
 
 
@@ -539,10 +543,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-
-            //先定义一个加载图片的option
-            DisplayImageOptions options = new DisplayImageOptions.Builder().showImageOnLoading(R.mipmap.loadingpic)
-                    .showImageOnFail(R.mipmap.loadingfailed).cacheInMemory(true).build();
             //加载餐厅或者食物照片
             ImageLoader.getInstance().displayImage((String) list.get(position).get("url"), holder.iv_restaurant,
                     options);
@@ -571,8 +571,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         holder.btn_addto_love.setSelected(false);
                         //取消收藏
                         //加密数据
-                        String string = "deleteFavorite@"+loginName+"@" + list.get(position).get("type")+"@"+list.get(position).get("id").toString().trim();
-                        String md5String = MySecurityUtil.string2MD5(string);;
+                        String string = "deleteFavorite@" + loginName + "@" + list.get(position).get("type") + "@" + list.get(position).get("id").toString().trim();
+                        String md5String = MySecurityUtil.string2MD5(string);
                         mySecurityAddtoLoveBean.setUserId(loginName);
                         mySecurityAddtoLoveBean.setSign(md5String);
                         mySecurityAddtoLoveBean.setType(list.get(position).get("type").toString());
@@ -609,14 +609,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         });
 
                     } else {
-                        if(list.get(position).get("isCollect").equals("true")){
+                        if (list.get(position).get("isCollect").equals("true")) {
                             Log.e("AAAAAAAA", "已经收藏过，切勿重复收藏");
-                        }else{
+                        } else {
                             holder.btn_addto_love.setSelected(true);
                             //添加收藏
                             //加密数据
-                            String string = "saveFavorite@"+loginName+"@" + list.get(position).get("type")+"@"+list.get(position).get("id").toString().trim();
-                            String md5String = MySecurityUtil.string2MD5(string);;
+                            String string = "saveFavorite@" + loginName + "@" + list.get(position).get("type") + "@" + list.get(position).get("id").toString().trim();
+                            String md5String = MySecurityUtil.string2MD5(string);
+                            ;
                             mySecurityAddtoLoveBean.setUserId(loginName);
                             mySecurityAddtoLoveBean.setSign(md5String);
                             mySecurityAddtoLoveBean.setType(list.get(position).get("type").toString());
@@ -670,5 +671,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //收藏按钮
             Button btn_addto_love;
         }
+    }
+
+    //实现点击两次返回键退出
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            long secondTime=System.currentTimeMillis();
+            if(secondTime-firstTime>2000){
+                Toast.makeText(this,"請按一次退出程序",Toast.LENGTH_SHORT).show();
+                firstTime=secondTime;
+                return true;
+            }else{
+                ManageActivityUtils.finishAll();
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

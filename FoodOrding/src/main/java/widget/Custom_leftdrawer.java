@@ -4,19 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.view.View.OnClickListener;
 
-import com.example.cxk.myapplication.MainActivity;
-import com.example.cxk.myapplication.R;
+import cn.gdin.hk.hungry.MainActivity;
 
 import activity.AboutHungryHurryActivity;
 import activity.CustomersupportActivity;
 import activity.HistoryActivity;
+import activity.SettingActivity;
+import cn.gdin.hk.hungry.R;
 
 public class Custom_leftdrawer extends RelativeLayout implements OnClickListener {
     private View view;
@@ -60,6 +59,8 @@ public class Custom_leftdrawer extends RelativeLayout implements OnClickListener
                 getContext().startActivity(intent2);
                 break;
             case R.id.leftdrawer_rl4_settings:
+                Intent intent3=new Intent(getContext(), SettingActivity.class);
+                getContext().startActivity(intent3);
                 break;
             case R.id.leftdrawer_rl5_about_Hunry:
                 Intent intent4=new Intent(getContext(), AboutHungryHurryActivity.class);

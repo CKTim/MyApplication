@@ -23,25 +23,19 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMapUtils;
 import com.amap.api.maps.model.LatLng;
-import com.example.cxk.myapplication.R;
+
 import com.google.gson.Gson;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import activity.ShopMapActivity;
-import bean.GetShopAddressBean;
 import bean.MySecurityShopMessageBean;
-import bean.NearbyAllListBean;
 import bean.ShopMessageBean;
+import cn.gdin.hk.hungry.R;
 import utils.HttpUtilsGetJson;
 import utils.MySecurityUtil;
 

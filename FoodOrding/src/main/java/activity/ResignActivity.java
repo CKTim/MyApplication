@@ -1,6 +1,5 @@
 package activity;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.cxk.myapplication.R;
 import com.google.gson.Gson;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -22,13 +20,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import bean.CategoryFoodBean;
-import bean.MySecurityHeatBean;
 import bean.MySecurityResignBean;
+import cn.gdin.hk.hungry.R;
+import utils.ManageActivityUtils;
 import utils.MySecurityUtil;
 
 /**
@@ -70,6 +65,7 @@ public class ResignActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.resign_activity);
+        ManageActivityUtils.addActivity(this);
         //初始化各个控件ID
         initIDs();
     }

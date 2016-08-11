@@ -1,4 +1,4 @@
-package com.example.cxk.myapplication;
+package com.example.hk.hungry;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -11,15 +11,11 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
-import com.tencent.android.tpush.XGNotifaction;
 import com.tencent.android.tpush.XGPushBaseReceiver;
 import com.tencent.android.tpush.XGPushClickedResult;
 import com.tencent.android.tpush.XGPushRegisterResult;
 import com.tencent.android.tpush.XGPushShowedResult;
 import com.tencent.android.tpush.XGPushTextMessage;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 /**
  * Created by cxk on 2016/5/5.

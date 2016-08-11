@@ -7,19 +7,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-
-import com.example.cxk.myapplication.MainActivity;
-import com.example.cxk.myapplication.R;
 import com.tencent.android.tpush.XGPushBaseReceiver;
 import com.tencent.android.tpush.XGPushClickedResult;
 import com.tencent.android.tpush.XGPushRegisterResult;
 import com.tencent.android.tpush.XGPushShowedResult;
 import com.tencent.android.tpush.XGPushTextMessage;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import activity.OrderDetailActivity;
+import cn.gdin.hk.hungry.R;
 
 /**
  * Created by cxk on 2016/5/6.
@@ -51,6 +48,7 @@ public class CustomPushReceiver extends XGPushBaseReceiver {
         try {
             JSONObject jsonObject=new JSONObject(xgPushTextMessage.getContent());
             String orderId=jsonObject.getString("ordersId");
+            Log.e("ordersId",jsonObject.getString("ordersId"));
             String msg=jsonObject.getString("msg");
             Intent resultIntent = new Intent(context, OrderDetailActivity.class);
             resultIntent.putExtra("orderId",orderId);
@@ -59,8 +57,8 @@ public class CustomPushReceiver extends XGPushBaseReceiver {
                     PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(context)
-                            .setContentTitle("通知")
-                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setContentTitle("Notification")
+                            .setSmallIcon(R.mipmap.app_logo)
                             .setContentIntent(resultPendingIntent)
                             .setDefaults(Notification.DEFAULT_ALL)
                             .setContentText(msg);

@@ -6,19 +6,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import adapter.MyListViewAdapter;
-import bean.HeatBean;
 import bean.MySecurityAddtoLoveBean;
 import bean.MySecurityHeatBean;
 import bean.MyloveBean;
-import bean.ShopMessageBean;
+import cn.gdin.hk.hungry.R;
 import utils.HttpUtilsAddToLove;
 import utils.HttpUtilsGetJson;
+import utils.ManageActivityUtils;
 import utils.MySecurityUtil;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -41,8 +38,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.cxk.myapplication.MainActivity;
-import com.example.cxk.myapplication.R;
+import cn.gdin.hk.hungry.MainActivity;
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -141,6 +137,7 @@ public class MyLoveActivity extends Activity implements OnClickListener {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mylove_activity);
+        ManageActivityUtils.addActivity(this);
         //如果安卓5.0设置状态栏为orange
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.orange));
@@ -351,7 +348,7 @@ public class MyLoveActivity extends Activity implements OnClickListener {
 
             //先定义一个加载图片的option
             DisplayImageOptions options = new DisplayImageOptions.Builder().showImageOnLoading(R.mipmap.loadingpic)
-                    .showImageOnFail(R.mipmap.loadingfailed).cacheInMemory(true).build();
+                    .showImageOnFail(R.mipmap.loadingfailed).cacheInMemory(true).cacheOnDisk(true).build();
             //加载餐厅或者食物照片
             ImageLoader.getInstance().displayImage((String) list.get(position).get("url"), holder.iv_restaurant,
                     options);

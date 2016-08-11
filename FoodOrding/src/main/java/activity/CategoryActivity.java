@@ -1,7 +1,5 @@
 package activity;
 
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,11 +12,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import com.example.cxk.myapplication.R;
-
+import cn.gdin.hk.hungry.R;
 import fragment.Cuisine_fragment;
 import fragment.District_fragment;
 import fragment.Restaurant_fragment;
+import utils.ManageActivityUtils;
 
 public class CategoryActivity extends FragmentActivity implements OnClickListener {
 	private Button btn_opendrawer, btn_restaurant, btn_cuisine, btn_district,btn_openMyLove;
@@ -34,6 +32,7 @@ public class CategoryActivity extends FragmentActivity implements OnClickListene
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.category_activity);
+		ManageActivityUtils.addActivity(this);
 		//如果安卓5.0设置状态栏为orange
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 			getWindow().setStatusBarColor(getResources().getColor(R.color.orange));

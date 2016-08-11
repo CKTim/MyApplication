@@ -1,4 +1,4 @@
-package com.example.cxk.myapplication;
+package com.example.hk.hungry;
 
 import org.junit.Test;
 

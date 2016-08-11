@@ -10,7 +10,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.cxk.myapplication.R;
+
+import cn.gdin.hk.hungry.R;
 
 
 public class MyListViewAdapter extends BaseAdapter {

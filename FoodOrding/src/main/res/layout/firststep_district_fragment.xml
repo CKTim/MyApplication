@@ -12,7 +12,6 @@
             android:id="@+id/iv_zhongcan"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_below="@+id/blank"
             android:scaleType="centerCrop"
             android:src="@mipmap/district1" />
 

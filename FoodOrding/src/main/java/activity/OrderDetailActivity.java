@@ -1,14 +1,11 @@
 package activity;
 
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -23,7 +20,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.cxk.myapplication.R;
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -36,36 +32,38 @@ import com.tencent.android.tpush.XGPushManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import bean.MySecurityOrderDetailBean;
-import bean.MyloveBean;
 import bean.OrderDetailBean;
-import bean.OrderListBean;
-import bean.ShopMessageBean;
+import cn.gdin.hk.hungry.R;
+import utils.ManageActivityUtils;
 import utils.MySecurityUtil;
 
 /**
  * Created by cxk on 2016/5/6.
  */
-public class OrderDetailActivity extends AppCompatActivity implements View.OnClickListener{
+public class OrderDetailActivity extends AppCompatActivity implements View.OnClickListener {
     private String loginName;
     private ListView lv;
-    private TextView tv_total,tv_OrderStatus;
+    private TextView tv_total, tv_OrderStatus, tv_name, tv_tel, tv_address, tv_payment, tv_OrderTime, tv_discount, tv_shopname;
     private MyFoodListViewAdapter adapter;
-    private List<Map<String,Object>> list=new ArrayList<>();
+    private List<Map<String, Object>> list = new ArrayList<>();
     private Gson gson = new Gson();
     private OkHttpClient okHttpClient = new OkHttpClient();
-    private MySecurityOrderDetailBean mySecurityOrderDetailBean=new MySecurityOrderDetailBean();
-    private static final int FINISH=0;
+    private MySecurityOrderDetailBean mySecurityOrderDetailBean = new MySecurityOrderDetailBean();
+    private static final int FINISH = 0;
     private String path;
     private DrawerLayout drawerLayout;
-    private ImageView iv_showMore,iv_shop;
-    private RelativeLayout rl_moredetails,rl_shoppic;
-    private Button btn_opendrawer,btn_openmylove;
+    private ImageView iv_showMore, iv_shop;
+    private RelativeLayout rl_moredetails, rl_shoppic;
+    private Button btn_opendrawer, btn_openmylove;
     private OrderDetailBean orderDetailBean;
+    private SharedPreferences sp_addressMessage;
+    private SharedPreferences.Editor editor;
     private Handler mhandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
@@ -73,7 +71,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                     //解密数据
                     String base64ToString = MySecurityUtil.Base64ToString((String) msg.obj);
                     String json = MySecurityUtil.decrypt(base64ToString);
-                    Log.e("OrderDetail",json);
+                    Log.e("OrderDetail", json);
                     // 使用gson映射得到bean类
                     orderDetailBean = gson.fromJson(json, OrderDetailBean.class);
                     //先定义一个加载图片的option,加载商家图片
@@ -82,47 +80,65 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                     //加载餐厅照片
                     ImageLoader.getInstance().displayImage(orderDetailBean.url, iv_shop,
                             options);
+                    //设置餐厅名字
+                    tv_shopname.setText(orderDetailBean.businessname);
                     //设置总价格
-                    tv_total.setText("Total:   HK$"+orderDetailBean.amount);
+                    tv_total.setText("Total:   HK$" + orderDetailBean.amount);
                     //判断订单状态，处于接单还是配送
-                    int Order_status=orderDetailBean.isfinish;
-                    if(Order_status==0){
+                    int Order_status = orderDetailBean.isfinish;
+                    if (Order_status == 0) {
                         tv_OrderStatus.setText("Your order have submited");
-                    }else if(Order_status==1){
+                    } else if (Order_status == 1) {
                         tv_OrderStatus.setText("Your order have confirmed");
-                    }else if(Order_status==2){
-                        tv_OrderStatus.setText("Your order have distributed");
-                    }else if(Order_status==3){
+                    } else if (Order_status == 2) {
+                        tv_OrderStatus.setText("Your order have finished");
+                    } else if (Order_status == 3) {
                         tv_OrderStatus.setText("Your order have finished");
                     }
-                     //将bean类里面的东西装载到list中便于使用
+                    //将bean类里面的东西装载到list中便于使用
                     for (int i = 0; i < orderDetailBean.foodlist.size(); i++) {
                         Map<String, Object> map = new HashMap<String, Object>();
                         map.put("foodName", orderDetailBean.foodlist.get(i).name);
                         map.put("foodPrice", orderDetailBean.foodlist.get(i).price);
-                        map.put("foodMount",orderDetailBean.foodlist.get(i).num);
-                        map.put("special",orderDetailBean.foodlist.get(i).special);
+                        map.put("foodMount", orderDetailBean.foodlist.get(i).num);
+                        map.put("special", orderDetailBean.foodlist.get(i).special);
                         list.add(map);
                     }
 
-                    adapter=new MyFoodListViewAdapter();
+                    adapter = new MyFoodListViewAdapter();
                     lv.setAdapter(adapter);
+                    //将保存到本地的个人信息显示出来
+                    final Calendar mCalendar= Calendar.getInstance();
+                    int year=mCalendar.get(Calendar.YEAR);
+                    int month=mCalendar.get(Calendar.MONTH);
+                    int day=mCalendar.get(Calendar.DAY_OF_MONTH);
+                    int hour=mCalendar.get(Calendar.HOUR);
+                    int minute=mCalendar.get(Calendar.MINUTE);
+                    tv_name.setText(sp_addressMessage.getString("name", "")+"  "+sp_addressMessage.getString("surname", ""));
+                    tv_tel.setText(sp_addressMessage.getString("phone", ""));
+                    tv_address.setText(sp_addressMessage.getString("city", "")+sp_addressMessage.getString("district", "")+sp_addressMessage.getString("detailAddress", ""));
+                    tv_payment.setText("payment: Cash");
+                    tv_OrderTime.setText("ordertime: "+year+"/"+month+"/"+day+"  "+hour+":"+minute);
+                    tv_discount.setText("discount: 0");
                     break;
             }
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.orderdetail_activity);
+        ManageActivityUtils.addActivity(this);
         //如果安卓5.0设置状态栏为orange
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.orange));
         }
         //初始化各个控件ID
         initIDS();
         //注册信鸽
-        XGPushManager.registerPush(this, "user"+loginName, new XGIOperateCallback() {
+        Log.e("loginName", loginName + "");
+        XGPushManager.registerPush(this, "user" + loginName, new XGIOperateCallback() {
             @Override
             public void onSuccess(Object o, int i) {
                 Log.e("AAAAAA", "用户端登录成功");
@@ -144,18 +160,18 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
 
     private void GetData() {
         //加密数据
-        String string ="orderDetails@"+getIntent().getStringExtra("orderId");
+        String string = "orderDetails@" + getIntent().getStringExtra("orderId");
         String md5String = MySecurityUtil.string2MD5(string);
         mySecurityOrderDetailBean.setOrdersId(getIntent().getStringExtra("orderId").toString());
         mySecurityOrderDetailBean.setSign(md5String);
         String json = gson.toJson(mySecurityOrderDetailBean);
-        Log.e("AAAAAAA",json);
+        Log.e("AAAAAAA", json);
         //encrypt加密
         String encryptJson = MySecurityUtil.encrypt(json);
         //加密后在String2Base64
         String encryptJsonToBase64 = MySecurityUtil.String2Base64(encryptJson);
         path = "http://202.171.212.154:8080/hh/orderDetails.action?json=" + encryptJsonToBase64;
-        Log.e("AAAAAAA",path);
+        Log.e("AAAAAAA", path);
         //开始访问得到返回数据
         Request request = new Request.Builder()
                 .url(path)
@@ -183,50 +199,58 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void initIDS() {
-        lv=(ListView)this.findViewById(R.id.MyOrder_lv);
-        tv_total=(TextView)this.findViewById(R.id.tv_total);
-        tv_OrderStatus=(TextView)this.findViewById(R.id.tv_order_status);
-        drawerLayout=(DrawerLayout)this.findViewById(R.id.drawerlayout);
-        iv_showMore=(ImageView)this.findViewById(R.id.iv_showMore);
-        btn_opendrawer=(Button)this.findViewById(R.id.btn_opendrawer);
-        btn_openmylove=(Button)this.findViewById(R.id.btn_openmylove);
-        rl_moredetails=(RelativeLayout)this.findViewById(R.id.rl_moredetails);
-        rl_shoppic=(RelativeLayout)this.findViewById(R.id.rl_shoppic);
-        iv_shop=(ImageView)this.findViewById(R.id.iv_shop);
+        lv = (ListView) this.findViewById(R.id.MyOrder_lv);
+        tv_total = (TextView) this.findViewById(R.id.tv_total);
+        tv_name = (TextView) this.findViewById(R.id.tv_name);
+        tv_tel = (TextView) this.findViewById(R.id.tv_tel);
+        tv_address = (TextView) this.findViewById(R.id.tv_address);
+        tv_payment = (TextView) this.findViewById(R.id.tv_payment);
+        tv_OrderTime = (TextView) this.findViewById(R.id.tv_OrderTime);
+        tv_discount = (TextView) this.findViewById(R.id.tv_discount);
+        tv_shopname = (TextView) this.findViewById(R.id.tv_shopname);
+        tv_OrderStatus = (TextView) this.findViewById(R.id.tv_order_status);
+        drawerLayout = (DrawerLayout) this.findViewById(R.id.drawerlayout);
+        iv_showMore = (ImageView) this.findViewById(R.id.iv_showMore);
+        btn_opendrawer = (Button) this.findViewById(R.id.btn_opendrawer);
+        btn_openmylove = (Button) this.findViewById(R.id.btn_openmylove);
+        rl_moredetails = (RelativeLayout) this.findViewById(R.id.rl_moredetails);
+        rl_shoppic = (RelativeLayout) this.findViewById(R.id.rl_shoppic);
+        iv_shop = (ImageView) this.findViewById(R.id.iv_shop);
         btn_opendrawer.setOnClickListener(this);
         btn_openmylove.setOnClickListener(this);
         iv_showMore.setOnClickListener(this);
         rl_shoppic.setOnClickListener(this);
         //获取登录帐号
-        SharedPreferences sp=OrderDetailActivity.this.getSharedPreferences("userMessage",MODE_PRIVATE);
-        loginName=sp.getString("loginName","");
+        SharedPreferences sp_userMessage = OrderDetailActivity.this.getSharedPreferences("userMessage", MODE_PRIVATE);
+        loginName = sp_userMessage.getString("loginName", "");
+        sp_addressMessage = OrderDetailActivity.this.getSharedPreferences("address", MODE_PRIVATE);
     }
 
     @Override
     public void onClick(View v) {
-      switch (v.getId()){
-          case R.id.btn_openmylove:
-              Intent intent=new Intent(this,MyLoveActivity.class);
-              startActivity(intent);
-              break;
-          case R.id.btn_opendrawer:
-              drawerLayout.openDrawer(Gravity.LEFT);
-              break;
-          case R.id.iv_showMore:
-              if (rl_moredetails.getVisibility()==View.VISIBLE) {
-                  rl_moredetails.setVisibility(View.GONE);
-              }else if(rl_moredetails.getVisibility()==View.GONE){
-                  rl_moredetails.setVisibility(View.VISIBLE);
-              }
+        switch (v.getId()) {
+            case R.id.btn_openmylove:
+                Intent intent = new Intent(this, MyLoveActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_opendrawer:
+                drawerLayout.openDrawer(Gravity.LEFT);
+                break;
+            case R.id.iv_showMore:
+                if (rl_moredetails.getVisibility() == View.VISIBLE) {
+                    rl_moredetails.setVisibility(View.GONE);
+                } else if (rl_moredetails.getVisibility() == View.GONE) {
+                    rl_moredetails.setVisibility(View.VISIBLE);
+                }
 
-              break;
-          case R.id.rl_shoppic:
-              Intent intent0=new Intent(OrderDetailActivity.this,ShopActivity.class);
-              intent0.putExtra("id",orderDetailBean.businessid+"");
-              Log.e("AAAAAAA",orderDetailBean.businessid+"");
-              startActivity(intent0);
-              break;
-      }
+                break;
+            case R.id.rl_shoppic:
+                Intent intent0 = new Intent(OrderDetailActivity.this, ShopActivity.class);
+                intent0.putExtra("id", orderDetailBean.businessid + "");
+                Log.e("AAAAAAA", orderDetailBean.businessid + "");
+                startActivity(intent0);
+                break;
+        }
     }
 
     //定义一个新的食物列表适配器
@@ -265,8 +289,8 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                 holder = (ViewHolder) convertView.getTag();
             }
             holder.tv_foodname.setText("-" + list.get(position).get("foodName").toString());
-            holder.tv_mount.setText("×"+list.get(position).get("foodMount").toString());
-            holder.tv_prices.setText("HK$"+list.get(position).get("foodPrice").toString());
+            holder.tv_mount.setText("×" + list.get(position).get("foodMount").toString());
+            holder.tv_prices.setText("HK$" + list.get(position).get("foodPrice").toString());
             return convertView;
         }
 

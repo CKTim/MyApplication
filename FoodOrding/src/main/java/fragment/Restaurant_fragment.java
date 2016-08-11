@@ -9,8 +9,7 @@ import java.util.Map;
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
-import com.amap.api.location.AMapLocationListener;
-import com.example.cxk.myapplication.R;
+import com.amap.api.location.AMapLocationListener;;
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -36,20 +35,17 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AbsListView.OnScrollListener;
 
 import activity.ShopActivity;
-import bean.HeatBean;
 import bean.MySecurityAddtoLoveBean;
 import bean.MySecurityNeabyAllListBean;
 import bean.NearbyAllListBean;
-import bean.ShopMessageBean;
+import cn.gdin.hk.hungry.R;
 import utils.HttpUtilsAddToLove;
 import utils.HttpUtilsGetJson;
-import utils.HttpUtilsGetJson.CallBack;
 import utils.MySecurityUtil;
 
 public class Restaurant_fragment extends Fragment {
@@ -203,7 +199,7 @@ public class Restaurant_fragment extends Fragment {
         });
 
         //设置ImageLoader的option
-        options = new DisplayImageOptions.Builder().showImageOnLoading(R.mipmap.loadingpic).showImageOnFail(R.mipmap.loadingfailed).cacheInMemory(true).build();
+        options = new DisplayImageOptions.Builder().showImageOnLoading(R.mipmap.loadingpic).showImageOnFail(R.mipmap.loadingfailed).cacheInMemory(true).cacheOnDisk(true).build();
         loader = ImageLoader.getInstance();
         //设置listview监听事件
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
